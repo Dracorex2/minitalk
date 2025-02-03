@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:38 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/02/03 11:18:50 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:19:49 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int	main(void)
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
 	{
-		if (message[1] == 8)
+		if (g_message[1] == 8)
 		{
-			if (message[0] == 0)
-				kill(message[2], SIGUSR1);
+			if (g_message[0] == 0)
+				kill(g_message[2], SIGUSR1);
 			else
-				write(1, &message[0], 1);
-			message[0] = 0;
-			message[1] = 0;
+				write(1, &g_message[0], 1);
+			g_message[0] = 0;
+			g_message[1] = 0;
 		}
 		pause();
 	}

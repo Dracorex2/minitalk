@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:44 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/02/03 11:17:15 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:21:43 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_tobin(unsigned char i, int pid)
 void	ft_signal(int sig)
 {
 	(void)sig;
-	ft_putstr(1, "send ok");
+	ft_putstr(1, "reception OK");
 	exit(0);
 }
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	int	i;
 
 	signal(SIGUSR1, ft_signal);
-	if (argc < 2)
+	if (argc < 3)
 		return (ft_putstr(2, "Error"), 1);
 	pid = ft_atoi(argv[1]);
 	i = -1;
