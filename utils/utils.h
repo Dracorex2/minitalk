@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:29:28 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/01/08 17:46:18 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:12:34 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 
-void    ft_putstr(int out, char *str);
+void	ft_putstr(int out, char *str);
 void	ft_putchar(char c);
 void	ft_putnbr(int nb);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:38 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/01/08 17:52:44 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:18:50 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,52 @@
 #include <stdio.h>
 #include "utils.h"
 
-int message[3] = {0, 0, 0};
+int	g_message[3] = {0, 0, 0};
 
-void on_signal(int signal, siginfo_t *info, void *context)
+void	on_signal(int signal, siginfo_t *info, void *context)
 {
-    (void)context;
-    if (signal == SIGUSR1)
-    {
-        message[0] <<= 1;
-        message[0] |= 1;
-    }
-    else if (signal == SIGUSR2)
-        message[0] <<= 1;
-    message[1]++;
-    message[2] = info->si_pid;
+	(void)context;
+	if (signal == SIGUSR1)
+	{
+		g_message[0] <<= 1;
+		g_message[0] |= 1;
+	}
+	else if (signal == SIGUSR2)
+		g_message[0] <<= 1;
+	g_message[1]++;
+	g_message[2] = info->si_pid;
 }
 
-void header()
+void	header(void)
 {
-    int pid;
+	int	pid;
 
-    pid  = getpid();
-    ft_putnbr(pid);
-    ft_putchar('\n');
+	pid = getpid();
+	ft_putnbr(pid);
+	ft_putchar('\n');
 }
 
-int main()
+int	main(void)
 {
-    struct sigaction	action;
+	struct sigaction	action;
 
-    header();
-    action.sa_flags = SA_SIGINFO;
+	header();
+	action.sa_flags = SA_SIGINFO;
 	action.sa_sigaction = on_signal;
 	sigemptyset(&action.sa_mask);
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-    while (1)
-    {
-        if (message[1] == 8)
-        {
-            if (message[0] == 0)
-                kill(message[2], SIGUSR1);
-            else
-                write(1, &message[0], 1);
-            message[0] = 0;
-            message[1] = 0;
-        }
-        pause();
-    }
+	while (1)
+	{
+		if (message[1] == 8)
+		{
+			if (message[0] == 0)
+				kill(message[2], SIGUSR1);
+			else
+				write(1, &message[0], 1);
+			message[0] = 0;
+			message[1] = 0;
+		}
+		pause();
+	}
 }
