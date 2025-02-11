@@ -6,14 +6,11 @@
 /*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:38 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/02/03 11:19:49 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:44:56 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-#include <stdio.h>
-#include "utils.h"
+#include "./utils/utils.h"
 
 int	g_message[3] = {0, 0, 0};
 

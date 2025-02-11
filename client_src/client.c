@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:44 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/02/03 11:21:43 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/10 23:00:17 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.h"
+#include "./utils/utils.h"
 
 int	ft_atoi(const char *nptr)
 {
