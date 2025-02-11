@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucmansa <lucmansa@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:38 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/02/10 13:44:56 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:02:00 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/utils.h"
+#include "../utils/utils.h"
 
 int	g_message[3] = {0, 0, 0};
 
@@ -26,6 +26,7 @@ void	on_signal(int signal, siginfo_t *info, void *context)
 		g_message[0] <<= 1;
 	g_message[1]++;
 	g_message[2] = info->si_pid;
+	kill(g_message[2], SIGUSR2);
 }
 
 void	header(void)
