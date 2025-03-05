@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:36 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/04 17:40:48 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:43:36 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void *ft_realloc(void *ptr, size_t old_size, size_t new_size)
 
 	res = malloc(new_size);
 	if (!res)
-		return (0);
+		return (free(ptr), NULL);
 	if (old_size < new_size)
 		ft_memcpy(res, ptr, old_size);
 	else

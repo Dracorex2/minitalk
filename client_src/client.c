@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:44 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/05 10:58:30 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:39:24 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../utils/utils.h"
+#include "utils.h"
 
 int	g_reception = 0;
 
@@ -30,24 +30,6 @@ int	ft_atoi(const char *nptr)
 	return (nbr);
 }
 
-int	ft_send(int pid, int sig)
-{
-	int	t;
-
-	g_reception = 0;
-	kill(pid, sig);
-	t = 0;
-	usleep(1);
-	while (g_reception == 0)
-	{
-		t++;
-		if (t >= 500)
-			return (0);
-		usleep(1);
-	}
-	return (1);
-}
-
 void	ft_tobin(unsigned char i, int pid)
 {
 	int	j;
@@ -55,7 +37,9 @@ void	ft_tobin(unsigned char i, int pid)
 	j = 8;
 	while (j-- > 0)
 	{
-		while (!ft_send(pid, 10 + ((i >> j) & 1) * 2))
+		g_reception = 0;
+		kill(pid, 10 + ((i >> j) & 1) * 2);
+		while (g_reception == 0)
 			usleep(1);
 	}
 }
