@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:44 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/05 18:39:24 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:12:14 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_signal(int sig)
 		g_reception = 1;
 	else if (sig == SIGUSR1)
 	{
-		ft_putstr(1, "reception OK");
+		ft_putstr(1, "reception OK\n");
 		exit(0);
 	}
 }

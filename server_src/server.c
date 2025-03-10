@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:38 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/05 19:22:42 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:09:49 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	g_message[4] = {0, 0, 0, 0};
 //char, nb_bits, pid, str_size
+
 void	on_signal(int signal, siginfo_t *info, void *context)
 {
 	(void)context;
@@ -32,7 +33,7 @@ void	on_signal(int signal, siginfo_t *info, void *context)
 
 void	header(void)
 {
-	int	pid;
+	int					pid;
 	struct sigaction	action;
 
 	action.sa_flags = SA_SIGINFO;
@@ -53,9 +54,10 @@ void	ft_reset(char **res)
 	*res = NULL;
 	kill(g_message[2], SIGUSR1);
 }
+
 int	main(void)
 {
-	char *res;
+	char	*res;
 
 	header();
 	res = NULL;

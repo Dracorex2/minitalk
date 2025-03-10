@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:29:28 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/05 17:43:17 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:07:01 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 void	ft_putstr(int out, char *str);
 void	ft_putchar(char c);
 void	ft_putnbr(int nb);
-void    *ft_realloc(void *ptr, size_t old_size, size_t new_size);
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 #endif
