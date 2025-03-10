@@ -6,7 +6,7 @@
 /*   By: lucmansa <lucmansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:12:44 by lucmansa          #+#    #+#             */
-/*   Updated: 2025/03/10 16:12:14 by lucmansa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:53:11 by lucmansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include "utils.h"
 
 int	g_reception = 0;
+
+void	ft_error(void)
+{
+	ft_putstr(2, "PID Error\n");
+	exit(1);
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -38,7 +44,8 @@ void	ft_tobin(unsigned char i, int pid)
 	while (j-- > 0)
 	{
 		g_reception = 0;
-		kill(pid, 10 + ((i >> j) & 1) * 2);
+		if (kill(pid, 10 + ((i >> j) & 1) * 2) == -1)
+			ft_error();
 		while (g_reception == 0)
 			usleep(1);
 	}
@@ -62,14 +69,17 @@ int	main(int argc, char **argv)
 
 	signal(SIGUSR1, ft_signal);
 	signal(SIGUSR2, ft_signal);
-	if (argc < 3)
+	if (argc < 3 || argc > 3)
 		return (ft_putstr(2, "Error"), 1);
 	pid = ft_atoi(argv[1]);
 	i = -1;
-	while (argv[2][++i])
-		ft_tobin(argv[2][i], pid);
-	ft_tobin('\0', pid);
-	while (1)
-		;
+	if (argv[2][0])
+	{
+		while (argv[2][++i])
+			ft_tobin(argv[2][i], pid);
+		ft_tobin('\0', pid);
+		while (1)
+			;
+	}
 	return (0);
 }
